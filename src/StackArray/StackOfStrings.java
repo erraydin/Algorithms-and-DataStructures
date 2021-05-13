@@ -6,8 +6,10 @@ public class StackOfStrings {
     private String[] stack;
     private int index;
 
-    public StackOfStrings(int capacity) {
-        stack = new String[capacity];
+
+    public StackOfStrings() {
+        stack = new String[8];
+        index = 0;
     }
 
     public boolean isEmpty() {
@@ -15,7 +17,9 @@ public class StackOfStrings {
     }
 
     public void push(String item) {
-        //first use index, then increment
+        if (index == stack.length) {
+            resize(2 * stack.length);
+        }
         stack[index++] = item;
     }
 
@@ -23,7 +27,23 @@ public class StackOfStrings {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
+
         //first decrement, then use index
-        return stack[--index];
+        String item = stack[--index];
+        stack[index] = null;
+
+        if (index > 0 && index == stack.length / 4) {
+            resize(stack.length / 2);
+        }
+
+        return item;
+    }
+
+    private void resize(int capacity) {
+        String[] newStack = new String[capacity];
+        for (int i = 0; i < index; i++){
+            newStack[i] = stack[i];
+        }
+        stack = newStack;
     }
 }
