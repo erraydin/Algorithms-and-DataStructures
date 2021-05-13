@@ -1,4 +1,5 @@
-package Stack;
+package StackLinkedList;
+
 import java.util.EmptyStackException;
 
 public class StackOfStrings {
@@ -8,6 +9,7 @@ public class StackOfStrings {
     private static class Node {
         String item;
         Node next;
+
         public Node(String item) {
             this.item = item;
         }
