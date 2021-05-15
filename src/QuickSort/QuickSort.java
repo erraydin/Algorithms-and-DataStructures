@@ -1,8 +1,20 @@
 package QuickSort;
 
+import Shuffle.Shuffle;
+
 public class QuickSort {
     public static void sort(Comparable[] a) {
+        Shuffle.shuffle(a);
+        sortHelper(a, 0, a.length - 1);
 
+    }
+
+    private static void sortHelper(Comparable[] a, int low, int high) {
+        if (low >= high) return;
+
+        int pivot = partition(a, low, high);
+        sortHelper(a, low, pivot - 1);
+        sortHelper(a, pivot + 1, high);
     }
 
 
