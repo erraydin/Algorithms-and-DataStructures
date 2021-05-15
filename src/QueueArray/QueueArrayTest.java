@@ -2,7 +2,7 @@ package QueueArray;
 
 public class QueueArrayTest {
     public static void main(String[] args) {
-        QueueOfStrings queue = new QueueOfStrings();
+        Queue queue = new Queue();
         System.out.println(queue.toString());
         queue.enqueue("1");
         System.out.println(queue.toString());

@@ -2,13 +2,13 @@ package QueueArray;
 
 import java.util.Arrays;
 
-public class QueueOfStrings {
-    String[] queue;
+public class Queue<Item> {
+    Item[] queue;
     int dequeIndex;
     int enqueueIndex;
 
-    public QueueOfStrings(){
-        queue = new String[8];
+    public Queue(){
+        queue = (Item[]) new Object[8];
         dequeIndex = 0;
         enqueueIndex = 0;
     }
@@ -18,7 +18,7 @@ public class QueueOfStrings {
     }
 
 
-    public void enqueue(String item) {
+    public void enqueue(Item item) {
         queue[enqueueIndex] = item;
         if ((enqueueIndex + 1) % queue.length == dequeIndex) {
             resize(2 * queue.length);
@@ -29,11 +29,11 @@ public class QueueOfStrings {
 
     }
 
-    public String dequeue() {
+    public Item dequeue() {
         if (queue.length >= 8 && enqueueIndex - dequeIndex < queue.length / 4) {
             resize(queue.length / 2);
         }
-        String res = queue[dequeIndex];
+        Item res = queue[dequeIndex];
         queue[dequeIndex] = null;
         dequeIndex++;
         return res;
@@ -41,7 +41,7 @@ public class QueueOfStrings {
 
 
     private void resize(int capacity) {
-        String[] newQueue = new String[capacity];
+        Item[] newQueue = (Item[]) new Object[capacity];
         int index = dequeIndex;
         int size = size();
         for (int i = 0; i < size; i++) {
