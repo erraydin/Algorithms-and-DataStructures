@@ -2,7 +2,7 @@ package StackLinkedList;
 
 public class Test {
     public static void main(String[] args) {
-        StackOfStrings stack = new StackOfStrings();
+        Stack stack = new Stack();
         stack.push("item1");
         stack.push("item2");
         System.out.println(stack.pop());
