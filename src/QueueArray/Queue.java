@@ -3,9 +3,9 @@ package QueueArray;
 import java.util.Arrays;
 
 public class Queue<Item> {
-    Item[] queue;
-    int dequeIndex;
-    int enqueueIndex;
+    private Item[] queue;
+    private int dequeIndex;
+    private int enqueueIndex;
 
     public Queue(){
         queue = (Item[]) new Object[8];
