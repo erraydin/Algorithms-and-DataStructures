@@ -17,10 +17,7 @@ public class StackOfStrings {
     }
 
     public void push(String item) {
-        if (index == stack.length) {
-            resize(2 * stack.length);
-        }
-        stack[index++] = item;
+
     }
 
     public String pop() {
@@ -46,4 +43,5 @@ public class StackOfStrings {
         }
         stack = newStack;
     }
+
 }
