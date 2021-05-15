@@ -2,10 +2,10 @@ package UnionFind;
 
 
 public class UnionFind {
-    private int[] parent;
+    private final int[] parent;
 
     //size[i] = size of the tree that has i has root. (if i is a root, else useless info)
-    private int[] size;
+    private final int[] size;
 
     public UnionFind(int capacity) {
         parent = new int[capacity];
@@ -24,6 +24,9 @@ public class UnionFind {
 
         int rootP = root(p);
         int rootQ = root(q);
+
+        if (rootP == rootQ) return;
+
         if (size[rootP] <= size[rootQ]) {
             parent[rootP] = rootQ;
             size[rootQ] += size[rootP];
@@ -37,9 +40,7 @@ public class UnionFind {
         if (p >= parent.length || q >= parent.length) {
             throw new IllegalArgumentException();
         }
-        int rootP = root(p);
-        int rootQ = root(q);
-        return rootP == rootQ;
+        return root(p) == root(q);
     }
 
     //with path compression
