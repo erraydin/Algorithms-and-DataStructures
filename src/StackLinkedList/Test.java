@@ -1,5 +1,7 @@
 package StackLinkedList;
 
+import java.util.Iterator;
+
 public class Test {
     public static void main(String[] args) {
         Stack stack = new Stack();
@@ -9,5 +11,6 @@ public class Test {
         stack.push("item3");
         System.out.println(stack.pop());
         System.out.println(stack.pop());
+
     }
 }

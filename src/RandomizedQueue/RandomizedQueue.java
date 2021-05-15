@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Random;
 
-public class RandomizedQueue<Item> {
+public class RandomizedQueue<Item>{
     private Item[] queue;
     private int lastIndex;
     // construct an empty randomized queue
