@@ -1,8 +1,9 @@
 package QueueArray;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
-public class Queue<Item> {
+public class Queue<Item> implements Iterable<Item>{
     private Item[] queue;
     private int dequeIndex;
     private int enqueueIndex;
@@ -67,5 +68,21 @@ public class Queue<Item> {
     @Override
     public String toString() {
         return Arrays.toString(queue) + " d: " + dequeIndex + " e: " + enqueueIndex;
+    }
+
+    @Override
+    public Iterator<Item> iterator() { return new Iterator<Item>() {
+        private int index = dequeIndex;
+        @Override
+        public boolean hasNext() {
+            return index != enqueueIndex;
+        }
+
+        @Override
+        public Item next() {
+            if (!hasNext()) {throw new IndexOutOfBoundsException();}
+            return queue[index++];
+        }
+    };
     }
 }

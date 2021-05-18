@@ -3,6 +3,10 @@ package DynamicMedian;
 import PriorityQueue.MaxPQ;
 import PriorityQueue.MinPQ;
 
+
+//Insert O(logn)
+//median is O(1)
+//removeMedian is Olog(n)
 public class DynamicMedian {
     private final MaxPQ<Integer> lower;
     private final MinPQ<Integer> upper;
