@@ -67,6 +67,7 @@ public class BST<Key extends Comparable<Key>, Value> {
         return null;
     }
 
+    //Hibbard Deletion
     public void delete(Key key) {
     }
 
@@ -146,7 +147,11 @@ public class BST<Key extends Comparable<Key>, Value> {
 
     /*-------------------------------------><----------------------------------------------------*/
 
-    //inorder traversal
+    /*##########################################################################
+     * #######################    ITERATION    #################################
+     * ############################################################################ */
+
+    //inorder traversal, so increasing order
     public Iterable<Key> keys() {
         Queue<Key> q = new Queue<>();
         inorder(root, q);
@@ -159,4 +164,6 @@ public class BST<Key extends Comparable<Key>, Value> {
         q.enqueue(x.key);
         inorder(x.right, q);
     }
+
+    /*-------------------------------------><----------------------------------------------------*/
 }
