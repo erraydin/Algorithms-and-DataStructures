@@ -1,5 +1,7 @@
 package ArrayList;
 
+import Utils.ArraySwap;
+
 import java.util.Arrays;
 import java.util.EmptyStackException;
 
@@ -38,6 +40,10 @@ public class MyArrayList<Key> {
         list[index] = null;
         if (index > 0 && index < list.length / 4) resize(list.length / 2);
         return res;
+    }
+
+    public void swap(int i, int j) {
+        ArraySwap.swap(list, i, j);
     }
 
     private void resize(int capacity) {
