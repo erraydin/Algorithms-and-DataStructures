@@ -2,19 +2,14 @@ package PriorityQueue;
 
 import ArrayList.MyArrayList;
 
-import java.util.Arrays;
 import java.util.EmptyStackException;
 
-//Implemented 1-indexed
-// parent of i is i/2
-// children of i are 2i and 2i + 1
-//Key extends Comparable<Key> means that we want a generic type Key which is comparable
-public class MinPQ<Key extends Comparable<Key>> {
+public class MaxPQ<Key extends Comparable<Key>> {
     private final MyArrayList<Key> pq;
     //number of elements
     private int N;
 
-    public MinPQ() {
+    public MaxPQ() {
         pq = new MyArrayList<>();
         //Because 1-indexed, we put auxiliary null in 0th index
         pq.add(null);
@@ -35,7 +30,7 @@ public class MinPQ<Key extends Comparable<Key>> {
         swim(N);
     }
 
-    public Key delMin() {
+    public Key delMax() {
         if (isEmpty()) throw new EmptyStackException();
         pq.swap(1, N);
         Key result = pq.pop();
@@ -46,7 +41,7 @@ public class MinPQ<Key extends Comparable<Key>> {
         return result;
     }
 
-    public Key min() {
+    public Key max() {
         if (size() == 0) throw new EmptyStackException();
         return pq.get(1);
     }
@@ -55,7 +50,7 @@ public class MinPQ<Key extends Comparable<Key>> {
     //When element at index i is smaller than its parent
     //You move it up until it is not
     private void swim(int i) {
-        while ( i > 1 && greater(i/2, i)) {
+        while ( i > 1 && less(i / 2, i)) {
             pq.swap(i, i/2);
             i = i / 2;
         }
@@ -69,10 +64,10 @@ public class MinPQ<Key extends Comparable<Key>> {
         while (2 * i <= N) {
             int j = 2 * i;
             // Second child exists and smaller
-            if (j < N && greater(j, j+1)){
+            if (j < N && less(j, j + 1)){
                 j++;
             }
-            if (!greater(i, j)) break;
+            if (!less(i, j)) break;
 
             //At this point j is the smaller child
             pq.swap(i, j);
@@ -80,8 +75,8 @@ public class MinPQ<Key extends Comparable<Key>> {
         }
     }
 
-    private boolean greater(int i, int j) {
-        return pq.get(i).compareTo(pq.get(j)) > 0;
+    private boolean less(int i, int j) {
+        return pq.get(i).compareTo(pq.get(j)) < 0;
     }
 
     //For test only
