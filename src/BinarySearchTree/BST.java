@@ -3,9 +3,11 @@ package BinarySearchTree;
 
 
 import QueueArray.Queue;
+import com.sun.source.tree.Tree;
 
 import java.util.EmptyStackException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class BST<Key extends Comparable<Key>, Value> {
     private TreeNode root;
@@ -67,8 +69,50 @@ public class BST<Key extends Comparable<Key>, Value> {
         return null;
     }
 
-    //Hibbard Deletion
+
     public void delete(Key key) {
+        root = delete(root, key);
+    }
+
+    //Hibbard Deletion
+    private TreeNode delete(TreeNode x, Key key) {
+        if (x == null) return null;
+        int cmp = key.compareTo(x.key);
+        if (cmp < 0) x.left = delete(x.left, key);
+        else if (cmp > 0) x.right = delete(x.right, key);
+        else {
+            if (x.right == null) return x.left;
+            if (x.left == null) return x.right;
+
+            //t will be the least element in the right subtree
+            //remove it, and keep its value. Then replace x with that.
+            TreeNode t = x;
+            x = findMin(t.right);
+            x.right = deleteMin(t.right);
+            x.left = t.left;
+
+        }
+        x.count = 1 + size(x.left) + size(x.right);
+        return x;
+    }
+    public TreeNode findMin(TreeNode x) {
+        if (x == null) throw new NoSuchElementException();
+        while (x.left != null) {
+            x = x.left;
+        }
+        return x;
+    }
+
+    public void deleteMin() {
+        root = deleteMin(root);
+    }
+
+    private TreeNode deleteMin(TreeNode x) {
+        if (x.left == null) return x.right;
+
+        x.left = deleteMin(x.left);
+        x.count = 1 + size(x.left) + size(x.right);
+        return x;
     }
 
     /*------------------------------------><-----------------------------------------------*/
