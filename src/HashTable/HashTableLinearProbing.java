@@ -25,9 +25,6 @@ public class HashTableLinearProbing<Key, Value> {
     }
 
 
-
-
-
     private int hash(Key key) {
         //Making hashcode positive so that module gives a valid index
         return (key.hashCode() & 0x7fffffff) % M;
