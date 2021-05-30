@@ -5,9 +5,9 @@ import StackLinkedList.Stack;
 
 
 public class Paths {
-    private boolean[] visited;
-    private int[] edgeTo;
-    private int source;
+    private final boolean[] visited;
+    private final int[] edgeTo;
+    private final int source;
 
     public Paths(Graph graph, int source) {
         visited = new boolean[graph.V()];
