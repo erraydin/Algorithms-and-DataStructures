@@ -18,7 +18,13 @@ public class Queue<Item> implements Iterable<Item>{
         return dequeIndex == enqueueIndex;
     }
 
-
+    /*
+    *
+    * [null  null  null   2]
+    *   e
+    *                     d
+    *
+    * */
     public void enqueue(Item item) {
         queue[enqueueIndex] = item;
         if ((enqueueIndex + 1) % queue.length == dequeIndex) {
@@ -36,7 +42,7 @@ public class Queue<Item> implements Iterable<Item>{
         }
         Item res = queue[dequeIndex];
         queue[dequeIndex] = null;
-        dequeIndex++;
+        dequeIndex = (dequeIndex + 1) % queue.length;
         return res;
     }
 

@@ -4,12 +4,12 @@ import Graph.Graph;
 import StackLinkedList.Stack;
 
 
-public class Paths {
+public class DFSPaths {
     private final boolean[] visited;
     private final int[] edgeTo;
     private final int source;
 
-    public Paths(Graph graph, int source) {
+    public DFSPaths(Graph graph, int source) {
         visited = new boolean[graph.V()];
         edgeTo = new int[graph.V()];
         for (int v = 0; v < graph.V(); v++) {
