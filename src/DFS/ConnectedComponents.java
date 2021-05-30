@@ -8,6 +8,7 @@ public class ConnectedComponents {
     private final int[] id;
     private final boolean[] visited;
     private int count;
+
     public ConnectedComponents(Graph graph) {
         count = 0;
         id = new int[graph.V()];

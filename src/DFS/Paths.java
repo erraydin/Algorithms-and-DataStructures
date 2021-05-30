@@ -29,6 +29,24 @@ public class Paths {
         }
     }
 
+    private void iterativeDfs(Graph graph, int source) {
+        Stack<Integer> stack = new Stack<>();
+        stack.push(source);
+        visited[source] = true;
+
+        while(!stack.isEmpty()) {
+            int cur = stack.pop();
+            for (int neighbor: graph.adj(cur)) {
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    edgeTo[neighbor] = cur;
+                    stack.push(neighbor);
+                }
+            }
+        }
+
+    }
+
     public boolean hasPathTo(int v) {
         return visited[v];
     }
