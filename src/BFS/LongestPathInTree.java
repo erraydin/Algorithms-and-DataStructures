@@ -5,10 +5,11 @@ import QueueArray.Queue;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
+
+//Works only in connected, can be modified to work in disconnected
 public class LongestPathInTree {
-    public static Iterable<Integer> longestPath(Graph graph) {
+    public static List<Integer> longestPath(Graph graph) {
 
         //First BFS
         Queue<Integer> queue = new Queue<>();
@@ -51,14 +52,19 @@ public class LongestPathInTree {
             }
         }
 
-        Stack<Integer> path = new Stack<>();
+        List<Integer> path = new ArrayList<>();
         for (int node = endLeaf; node != startLeaf; node = edgeTo[node]) {
-            path.push(node);
+            path.add(node);
         }
-        path.push(startLeaf);
+        path.add(startLeaf);
 
         return path;
 
 
+    }
+
+    public static int center(Graph graph) {
+        List<Integer> path = longestPath(graph);
+        return path.get(path.size() / 2);
     }
 }
