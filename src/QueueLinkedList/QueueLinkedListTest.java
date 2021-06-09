@@ -14,6 +14,6 @@ public class QueueLinkedListTest {
         System.out.println(queue.dequeue());
         System.out.println(queue.dequeue());
 
-
+        System.out.println("Deneme");
     }
 }
